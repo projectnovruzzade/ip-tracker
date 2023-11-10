@@ -1,6 +1,6 @@
 let url = 'https://geo.ipify.org/api/v2/country,city?';
 let key = 'at_2wXpHOACYfJct46eNyzvzbtefA0Fe';
-// let IP = "5.197.201.126";
+// let IP = "x.xxx.xxx";
 let ipAddressInput = document.querySelector(".ipAddress");
 let ipLocationInput = document.querySelector(".location");
 let ipTimezoneInput = document.querySelector(".timezone");
@@ -9,14 +9,10 @@ let sentBtn = document.querySelector(".sentBtn");
 let searchBar = document.querySelector(".searchBar");
 
 
-
-
 (async function () {
     let response = await fetch('https://api.ipify.org?format=json');
     let data = await response.json();
     let userIP = data.ip;
-    console.log(userIP)
-       
      getData(userIP);
 })();
 
@@ -63,21 +59,10 @@ function setData(data) {
     } catch (error) {
         console.log(error);
     }
-
-    console.log(lat);
-    console.log(lng);
-
-
     ipAddressInput.innerHTML = `${dataIP}`;
     ipLocationInput.innerHTML = `${locationCountry}, ${locationCity}`;
     ipTimezoneInput.innerHTML = `UTC ${locationTimeZone}`;
     ipIspInput.innerHTML = `${dataISP}`
-
-    console.log(dataIP)
-    console.log(locationCity)
-    console.log(locationCountry)
-    console.log(locationTimeZone)
-    console.log(dataISP)
 }
 
 
@@ -104,7 +89,6 @@ function setDataToMap(lat, lng) {
 
     marker = L.marker([lat, lng], { icon: customIcon }).addTo(map);
 }
-
 
 
 osm.addTo(map);
